@@ -13,10 +13,17 @@ public class GcuRectangle extends GcuBoundedShape
     }
     
     @Override
-    public void draw( Graphics g ) {
+    public void draw(Graphics g) {
+        g.setColor(getColor());
+        int x = Math.min(getStartX(), getEndX());
+        int y = Math.min(getStartY(), getEndY());
+        int width = Math.abs(getStartX() - getEndX());
+        int height = Math.abs(getStartY() - getEndY());
         
-		[Mission 2]
-		
-		
+        if (isFill()) {
+            g.fillRect(x, y, width, height);
+        } else {
+            g.drawRect(x, y, width, height);
+        }
     }
 }
