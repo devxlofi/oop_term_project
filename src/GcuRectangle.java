@@ -20,7 +20,7 @@ public class GcuRectangle extends GcuBoundedShape
         int width = Math.abs(getStartX() - getEndX());
         int height = Math.abs(getStartY() - getEndY());
         
-        if (isFill()) {
+        if (getFill()) {
             g.fillRect(x, y, width, height);
         } else {
             g.drawRect(x, y, width, height);
