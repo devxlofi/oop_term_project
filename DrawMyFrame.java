@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -30,9 +29,9 @@ public class DrawMyFrame extends JFrame
 
     setJMenuBar(menuBar);
 
-    colorPanel.setLayout(new GridLayout( 1, 6, 10, 10 ));
+    colorPanel.setLayout(new GridLayout(1, 6, 10, 10));
     add(colorPanel, BorderLayout.NORTH);
-    
+
     add(panel, BorderLayout.CENTER);
 
     addButtonsToJPanel(colorPanel, colors);
@@ -40,7 +39,7 @@ public class DrawMyFrame extends JFrame
     addMenuItemsToJMenu(fileMenu, fileOptions);
     addMenuItemsToJMenu(shapeMenu, shapeOptions);
     addMenuItemsToJMenu(methodMenu, methodOptions);
-    
+
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(800, 600);
     setVisible(true);
@@ -65,7 +64,7 @@ public class DrawMyFrame extends JFrame
     }
   }
 
-  private class ColorHandler implements [Mission 1] {
+  private class ColorHandler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       String actionCommand = e.getActionCommand();
       switch (actionCommand) {
@@ -94,25 +93,24 @@ public class DrawMyFrame extends JFrame
     }
   }
 
-  private class MenuHandler implements [Mission 1] {
+  private class MenuHandler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       String actionCommand = e.getActionCommand();
       switch (actionCommand) {
         case "Undo":
           panel.clearLastShape();
-        break;
+          break;
         case "Redo":
           panel.redoLastShape();
-        break;
+          break;
         case "Clear":
           panel.clearDrawing();
-        break;
+          break;
         case "Save To":
           panel.saveImageFromJPanel();
           break;
         case "Open From":
           panel.openImageToJPanel();
-
           break;
         case "Line":
           panel.setCurrentShapeType("Line");
