@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -160,9 +159,8 @@ public class DrawMyPanel extends JPanel
                                                   event.getX(), event.getY(), currentShapeColor, currentShapeFilled);
               break;
           case "Oval":
-              
-			  [Mission 3]
-			  
+              currentShapeObject = new GcuOval(event.getX(), event.getY(), 
+                                                event.getX(), event.getY(), currentShapeColor, currentShapeFilled);
               break;
       }
     }
@@ -170,7 +168,8 @@ public class DrawMyPanel extends JPanel
     @Override
     public void mouseReleased(MouseEvent event)
     {
-        [Mission 4]
+        currentShapeObject.setEndX(event.getX());
+        currentShapeObject.setEndY(event.getY());
         
         myShapes.addFront(currentShapeObject);
         
@@ -188,7 +187,8 @@ public class DrawMyPanel extends JPanel
     @Override
     public void mouseDragged(MouseEvent event)
     {
-        [Mission 4]
+        currentShapeObject.setEndX(event.getX());
+        currentShapeObject.setEndY(event.getY());
         
         statusLabel.setText(String.format("Mouse Coordinates X: %d Y: %d", event.getX(), event.getY()));
         
