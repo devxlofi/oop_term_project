@@ -1,15 +1,14 @@
-import javax.swing.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import javax.imageio.*;
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 import java.nio.file.FileAlreadyExistsException;
+import java.util.ArrayList;
+import javax.imageio.*;
+import javax.swing.*;
 
 public class DrawMyPanel extends JPanel 
 {
@@ -27,6 +26,7 @@ public class DrawMyPanel extends JPanel
     myShapes = new LinkedList<GcuShape>();
     clearedShapes = new LinkedList<GcuShape>();
 
+    // Default values
     currentShapeType = "Line";
     currentShapeObject = null;
     currentShapeColor = Color.BLACK;
@@ -116,9 +116,14 @@ public class DrawMyPanel extends JPanel
         throw new FileAlreadyExistsException("File already exists.");
       }
 
+      this.remove(statusLabel); // 마우스 좌표를 저장하지 않기 위해 statusLabel을 제거
+
       BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
       paint(img.createGraphics());
       ImageIO.write(img, "PNG", file);
+
+      this.add(statusLabel, BorderLayout.SOUTH); // statusLabel을 다시 추가
+      this.validate();
     }
     catch (FileAlreadyExistsException e) {
       JOptionPane.showMessageDialog(null, "This file already exists");
