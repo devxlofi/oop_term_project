@@ -11,8 +11,8 @@ public class DrawMyFrame extends JFrame {
   private JMenuBar menuBar = new JMenuBar();
 
   private JMenu fileMenu = new JMenu("File");
-  private String[] fileOptions = {"Undo", "Redo", "Clear", "Save To", "Open From"};
-  private String[] fileIcons = {"./assets/icons/undo.png", "./assets/icons/redo.png", "./assets/icons/clear.png", "./assets/icons/save.png", "./assets/icons/open.png"};
+  private String[] fileOptions = {"Undo", "Redo", "Clear", "Save Only Image", "Save With History","Open From"};
+  private String[] fileIcons = {"./assets/icons/undo.png", "./assets/icons/redo.png", "./assets/icons/clear.png", "./assets/icons/save.png", "./assets/icons/save.png", "./assets/icons/open.png"};
 
   private JMenu shapeMenu = new JMenu("Shapes");
   private String[] shapeOptions = {"Line", "Rectangle", "Oval"};
@@ -101,8 +101,11 @@ public class DrawMyFrame extends JFrame {
         case "Clear":
           panel.clearDrawing();
           break;
-        case "Save To":
+        case "Save Only Image":
           panel.saveImageFromJPanel();
+          break;
+        case "Save With History":
+          panel.saveImageWithLinkedList();
           break;
         case "Open From":
           panel.openImageToJPanel();
