@@ -97,4 +97,22 @@ public void mouseDragged(MouseEvent event) {
 </details>
 
 
-## <img src="https://em-content.zobj.net/source/microsoft-teams/363/hammer-and-wrench_1f6e0-fe0f.png" alt="기능 추가 및 개선" style="width:1em; height:1em"/> 기능 추가 및 개선
+## <img src="https://em-content.zobj.net/source/microsoft-teams/363/hammer-and-wrench_1f6e0-fe0f.png" alt="추가된 기능 및 개선사항" style="width:1em; height:1em"/> 추가된 기능 및 개선사항
+
+### 완성본에서 마우스 좌표값 제거
+그림판에서 그림을 다 그리고 파일을 저장했을때, 좌측 하단에 표시되는 마우스 좌표값이 같이 저장되는 문제를 개선했습니다.
+
+### 옵션 단축키 추가
+일상생활에서 자주 쓰이는 단축키들을 바로 활용할 수 있도록 추가하였습니다.
+ - `Undo` -> `Command + Z` 
+ - `Redo` -> `Command + Shift + Z`
+ - `Save` -> `Command + S`
+
+### 옵션 아이콘 추가
+보다 직관적으로 어떤 액션이 실행되는지 유저가 파악할 수 있도록 파일 옵션에 아이콘을 추가하였습니다.
+
+### 컬러 팔렛트로 수정
+기존의 버튼 6색상 체제에서 더 많은 색을 사용자가 선택할 수 있도록 `JColorChooser`를 활용해 색을 자유롭게 선택할 수 있도록 수정하였습니다.
+
+### 파일 저장 방식 수정
+파일명만 입력하면 루트 디렉토리에 저장이 되던 형식에서,`JFileChooser`를 활용해 저장할 때 파일 위치도 함께 저장할 수 있도록 수정하였습니다.
