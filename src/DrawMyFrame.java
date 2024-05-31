@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
 
-public class DrawMyFrame extends JFrame
-{
+public class DrawMyFrame extends JFrame {
   private JMenuBar menuBar = new JMenuBar();
 
   private JMenu fileMenu = new JMenu("File");
@@ -24,8 +23,7 @@ public class DrawMyFrame extends JFrame
 
   DrawMyPanel panel = new DrawMyPanel();
 
-  public DrawMyFrame()
-  {
+  public DrawMyFrame() {
     super("GCU Paint Tools");
 
     setJMenuBar(menuBar);
@@ -50,8 +48,10 @@ public class DrawMyFrame extends JFrame
     MenuHandler handler = new MenuHandler();
     for (int i = 0; i < arr.length; i++) {
       JMenuItem menuItem = new JMenuItem(arr[i]);
-      if (arr[i].contains("Undo")) {
+      if (arr[i].equals("Undo")) {
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.META_MASK));
+      } else if (arr[i].equals("Redo")) {
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.META_MASK | ActionEvent.SHIFT_MASK));
       }
       menu.add(menuItem);
       menuItem.addActionListener(handler);
@@ -101,7 +101,7 @@ public class DrawMyFrame extends JFrame
     public void actionPerformed(ActionEvent e) {
       String actionCommand = e.getActionCommand();
       switch (actionCommand) {
-        case "Undo (Ctrl+Z)":
+        case "Undo":
           panel.clearLastShape();
           break;
         case "Redo":
