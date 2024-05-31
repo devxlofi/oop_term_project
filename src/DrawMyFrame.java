@@ -1,21 +1,26 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class DrawMyFrame extends JFrame {
   private JMenuBar menuBar = new JMenuBar();
 
   private JMenu fileMenu = new JMenu("File");
   private String[] fileOptions = {"Undo", "Redo", "Clear", "Save To", "Open From"};
+  private String[] fileIcons = {"./assets/icons/undo.png", "./assets/icons/redo.png", "./assets/icons/clear.png", "./assets/icons/save.png", "./assets/icons/open.png"};
 
   private JMenu shapeMenu = new JMenu("Shapes");
   private String[] shapeOptions = {"Line", "Rectangle", "Oval"};
+  private String[] shapeIcons = {"./assets/icons/line.png", "./assets/icons/rectangle.png", "./assets/icons/oval.png"};
 
   private JMenu methodMenu = new JMenu("Method");
   private String[] methodOptions = {"Fill", "Draw"};
+  private String[] methodIcons = {"./assets/icons/fill.png", "./assets/icons/draw.png"};
 
   private JMenu colorMenu = new JMenu("Color");
 
@@ -28,9 +33,9 @@ public class DrawMyFrame extends JFrame {
 
     add(panel, BorderLayout.CENTER);
 
-    addMenuItemsToJMenu(fileMenu, fileOptions);
-    addMenuItemsToJMenu(shapeMenu, shapeOptions);
-    addMenuItemsToJMenu(methodMenu, methodOptions);
+    addMenuItemsToJMenu(fileMenu, fileOptions, fileIcons);
+    addMenuItemsToJMenu(shapeMenu, shapeOptions, shapeIcons);
+    addMenuItemsToJMenu(methodMenu, methodOptions, methodIcons);
     addColorMenu(colorMenu);
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,10 +43,20 @@ public class DrawMyFrame extends JFrame {
     setVisible(true);
   }
 
-  public void addMenuItemsToJMenu(JMenu menu, String[] arr) {
+  public void addMenuItemsToJMenu(JMenu menu, String[] arr, String[] icons) {
     MenuHandler handler = new MenuHandler();
     for (int i = 0; i < arr.length; i++) {
-      JMenuItem menuItem = new JMenuItem(arr[i]);
+      // 상대 경로를 사용하여 ImageIcon 생성
+      ImageIcon originalIcon = new ImageIcon(icons[i]);
+      // 아이콘 크기를 16x16으로 조정
+      Image image = originalIcon.getImage();
+      Image newimg = image.getScaledInstance(12, 12, java.awt.Image.SCALE_SMOOTH);
+      ImageIcon resizedIcon = new ImageIcon(newimg);
+      
+      JMenuItem menuItem = new JMenuItem(arr[i], resizedIcon);
+      menuItem.setIconTextGap(5);  // 아이콘과 텍스트 사이의 간격을 5로 설정
+      menuItem.setBorder(new EmptyBorder(0, -10, 0, 10));  // 상하좌우 2픽셀 패딩 설정
+
       if (arr[i].equals("Undo")) {
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.META_MASK));
       } else if (arr[i].equals("Redo")) {
