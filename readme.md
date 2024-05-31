@@ -8,7 +8,9 @@ Making a Simple Drawing Application with Java for a Term Project
 ## <img src="https://em-content.zobj.net/source/microsoft-teams/363/thinking-face_1f914.png" alt="프로젝트 소개" style="width:1em; height:1em"/> 프로젝트 소개
 
 객체지향프로그래밍 강의 텀 프로젝트의 진행 과정과 변경사항을 기록하기 위해 만든 Git 레포지토리입니다. 이 프로젝트는 `java.awt`와 `javax.swing` 등의 라이브러리를 활용하여 기초적인 자바 스킬을 향상시키기 위해 진행합니다. 초기 커밋은 Hong Min 교수님께서 제공해 주셨으며, 미션 1~4까지의 과제가 포함되어 있습니다. 이 과제들은 초반에 해결되었고, 더 나은 그림판 애플리케이션으로 발전시켜보며 자바에 대해 더 깊이 이해하고자 합니다.
-<br /><br />
+
+<details>
+<summary><img src="https://em-content.zobj.net/source/microsoft-teams/363/check-mark_2714-fe0f.png" alt="해결한 미션" style="width:1em; height:1em;"/><b>&nbsp;해결한 미션 설명</b></summary>
 
 ## <img src="https://em-content.zobj.net/source/microsoft-teams/363/check-mark_2714-fe0f.png" alt="해결한 미션" style="width:1em; height:1em"/> 해결한 미션
 
@@ -92,3 +94,7 @@ public void mouseDragged(MouseEvent event) {
   - 화면을 다시 그립니다.
 
 이 두 메서드는 마우스 이벤트를 처리하여 도형을 그리기 위해 사용됩니다.
+</details>
+
+
+## <img src="https://em-content.zobj.net/source/microsoft-teams/363/hammer-and-wrench_1f6e0-fe0f.png" alt="기능 추가 및 개선" style="width:1em; height:1em"/> 기능 추가 및 개선
