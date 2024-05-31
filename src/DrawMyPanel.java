@@ -105,36 +105,41 @@ public class DrawMyPanel extends JPanel
     }
   }
 
+
   public void saveImageFromJPanel() {
     try {
-      String fileName = JOptionPane.showInputDialog("Enter a file name:");
+        JFileChooser fileChooser = new JFileChooser(new File("."));
+        fileChooser.setDialogTitle("Specify a file to save");
 
-      if (fileName.equals(null) || fileName.trim().equals("") ) {
-        throw new Exception("Please enter a file name!");
-      }
+        int userSelection = fileChooser.showSaveDialog(null);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String filePath = fileToSave.getPath(); // 상대 경로 사용
 
-      File file = new File("./" + fileName + ".png");
-            
-      if (file.exists()) {
-        throw new FileAlreadyExistsException("File already exists.");
-      }
+            if (!filePath.toLowerCase().endsWith(".png")) {
+                filePath += ".png";
+                fileToSave = new File(filePath);
+            }
 
-      this.remove(statusLabel); // 마우스 좌표를 저장하지 않기 위해 statusLabel을 제거
+            if (fileToSave.exists()) {
+                throw new FileAlreadyExistsException("File already exists.");
+            }
 
-      BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-      paint(img.createGraphics());
-      ImageIO.write(img, "PNG", file);
+            this.remove(statusLabel); // 마우스 좌표를 저장하지 않기 위해 statusLabel을 제거
 
-      this.add(statusLabel, BorderLayout.SOUTH); // statusLabel을 다시 추가
-      this.validate();
+            BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+            paint(img.createGraphics());
+            ImageIO.write(img, "PNG", fileToSave);
+
+            this.add(statusLabel, BorderLayout.SOUTH); // statusLabel을 다시 추가
+            this.validate();
+        }
+    } catch (FileAlreadyExistsException e) {
+        JOptionPane.showMessageDialog(null, "This file already exists");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
     }
-    catch (FileAlreadyExistsException e) {
-      JOptionPane.showMessageDialog(null, "This file already exists");
-    }
-    catch (Exception e) {
-      JOptionPane.showMessageDialog(null, e);
-    }
-  }
+}
 
   /**
    * Mutator Methods
