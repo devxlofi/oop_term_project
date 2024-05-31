@@ -148,6 +148,11 @@ public class DrawMyPanel extends JPanel
       currentShapeColor = color;
   }
 
+  public Color getCurrentShapeColor() {
+    return currentShapeColor;
+  }
+
+
   public void setCurrentShapeFilled(boolean filled) {
       currentShapeFilled = filled;
   }
