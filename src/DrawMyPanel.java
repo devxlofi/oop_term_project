@@ -60,9 +60,12 @@ public class DrawMyPanel extends JPanel
   }
 
   public void clearDrawing() {
-    myShapes.makeEmpty();
-    clearedShapes.makeEmpty();
-    repaint();
+    int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the drawing?\nThis action cannot be undone.", "Confirm Clear", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+      myShapes.makeEmpty();
+      clearedShapes.makeEmpty();
+      repaint();
+    }
   }
 
 
