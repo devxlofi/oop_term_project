@@ -133,6 +133,7 @@ public class DrawMyPanel extends JPanel
 
             this.add(statusLabel, BorderLayout.SOUTH); // statusLabel을 다시 추가
             this.validate();
+            JOptionPane.showMessageDialog(null, "The file was saved successfully.");
         }
     } catch (FileAlreadyExistsException e) {
         JOptionPane.showMessageDialog(null, "This file already exists");
