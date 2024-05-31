@@ -61,7 +61,9 @@ public class DrawMyFrame extends JFrame {
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.META_MASK));
       } else if (arr[i].equals("Redo")) {
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.META_MASK | ActionEvent.SHIFT_MASK));
-      }
+      } else if(arr[i].equals("Save Only Image")) {
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.META_MASK));
+      } 
       menu.add(menuItem);
       menuItem.addActionListener(handler);
     }
