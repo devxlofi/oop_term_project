@@ -158,4 +158,4 @@ public void mouseDragged(MouseEvent event) {
   License: [MIT License](https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE)
 
 - FontAwesome (Pro Plan). (n.d.). Retrieved from [https://fontawesome.com](https://fontawesome.com)  
-  License: [Font Awesome Pro License](https://fontawesome.com/license/pro
+  License: [Font Awesome Pro License](https://fontawesome.com/license/pro)
