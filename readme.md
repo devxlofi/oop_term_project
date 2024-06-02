@@ -1,3 +1,5 @@
+<!-- project github address : https://github.com/devxlofi/oop_term_project -->
+
 # OOP TERM PROJECT
 Making a Simple Drawing Application with Java for a Term Project
 <br/>
