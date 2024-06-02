@@ -1,10 +1,8 @@
 # OOP TERM PROJECT
 Making a Simple Drawing Application with Java for a Term Project
 <br/>
-<br/>
-<br/>
 
-### KOREAN
+
 ## <img src="https://em-content.zobj.net/source/microsoft-teams/363/thinking-face_1f914.png" alt="프로젝트 소개" style="width:1em; height:1em"/> 프로젝트 소개
 
 객체지향프로그래밍 강의 텀 프로젝트의 진행 과정과 변경사항을 기록하기 위해 만든 Git 레포지토리입니다. 이 프로젝트는 `java.awt`와 `javax.swing` 등의 라이브러리를 활용하여 기초적인 자바 스킬을 향상시키기 위해 진행합니다. 초기 커밋은 Hong Min 교수님께서 제공해 주셨으며, 미션 1~4까지의 과제가 포함되어 있습니다. 이 과제들은 초반에 해결되었고, 더 나은 그림판 애플리케이션으로 발전시켜보며 자바에 대해 더 깊이 이해하고자 합니다.
@@ -96,6 +94,33 @@ public void mouseDragged(MouseEvent event) {
 이 두 메서드는 마우스 이벤트를 처리하여 도형을 그리기 위해 사용됩니다.
 </details>
 
+<br/>
+
+## <img src="https://em-content.zobj.net/source/microsoft-teams/363/shooting-star_1f320.png" alt="가산점 포인트" style="width:1em; height:1em"/> 가산점 포인트
+
+
+그림을 저장한 후에 다시 그림판으로 불러왔을 때, `LinkedList`로 저장된 Shapes들을 그대로 다시 불러와서 `Undo`와 `Redo`가 작동하게 하면, 교수님께서 가산점을 주신다고 하셨습니다. 이때, `LinkedList`를 어떤 형식과 확장자로 저장하는지는 자율이라고 하셨습니다.
+
+### JSON 형태로 myShapes값을 저장
+우선, myShapes들을 가장 직관적이고 간단하게 저장할 수 있는 방법은 JSON 형식을 활용하는 것이라고 생각했습니다. JSON 형식은 `key-value` 형식으로 저장되어, myShapes 안에 있는 `fill`, `rgba`, `startX`, `startY`, `endX`, `endY` 값을 명시하여 저장하기에 좋았습니다.
+
+다만, Java에서 JSON 형식으로 parsing 하기 위해서는 매우 복잡한 절차를 따라야했기 때문에, `jackson` 라이브러리를 활용하여 JSON 타입으로 인코딩하고 디코딩했습니다.
+
+다음으로 저는 myShapes 정보를 `.txt`, `.json` 등의 다른 확장자로 따로 저장하고 싶지 않았습니다. 그래서 해킹 등에서 자주 활용되는 `Steganography` 기술을 활용하여 하나의 `.png` 파일에 이미지와 myShapes 값을 모두 저장하기로 하였습니다.
+
+### Steganography란
+> 스테가노그래피(Steganography)는 정보 은닉의 한 방법으로, 메시지를 다른 비밀 메시지에 숨기는 기술입니다. 즉, 눈에 보이는 데이터 뒤에 실제 중요한 정보를 감추는 방식입니다. 주로 디지털 이미지, 오디오 파일, 비디오 파일 등 다양한 매체에 숨겨진 정보를 삽입하여 데이터를 보호하거나 비밀 메시지를 전달하는 데 사용됩니다. 이 기술은 정보의 존재를 숨기기 때문에 해킹이나 데이터 유출로부터 중요한 정보를 보호할 수 있습니다. 예를 들어, 이미지 파일에 숨겨진 텍스트 데이터는 이미지가 그대로 보여지기 때문에 겉으로는 아무런 변화가 없지만, 특정 소프트웨어를 사용하면 숨겨진 정보를 추출할 수 있습니다.
+
+.png 파일은 끝을 "IEND" 청크로 표시합니다. 따라서 숨기는 데이터는 이 청크 뒤가 아닌 파일 내의 픽셀 데이터에 삽입됩니다.
+
+### 숨기는 방법
+1. **JSON 데이터를 이진 문자열로 변환**: JSON 데이터를 각 문자마다 8비트의 이진 문자열로 변환합니다.
+2. **종료 마커 추가**: 데이터의 끝을 표시하기 위해 "00000011"과 같은 종료 마커를 추가합니다.
+3. **픽셀 데이터에 삽입**: 변환된 이진 데이터를 이미지의 픽셀 데이터의 청색 채널의 최소 유효 비트(LSB)에 삽입합니다.
+
+이렇게 하여 이미지의 시각적 품질을 유지하면서도 데이터를 안전하게 숨겨 저장할 수 있었습니다.
+
+<br/>
 
 ## <img src="https://em-content.zobj.net/source/microsoft-teams/363/hammer-and-wrench_1f6e0-fe0f.png" alt="추가된 기능 및 개선사항" style="width:1em; height:1em"/> 추가된 기능 및 개선사항
 
