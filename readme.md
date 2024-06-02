@@ -149,7 +149,7 @@ public void mouseDragged(MouseEvent event) {
 
 <br/>
 
-## 프로젝트에 포함된 오픈소스
+## <img src="/assets/icons/open-file-folder.png" alt="프로젝트에 포함된 오픈소스" style="width:1em; height:1em"/> 프로젝트에 포함된 오픈소스
 
 - Jackson JSON Processor: FasterXML. (n.d.). Retrieved from [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson)  
   License: [Apache License 2.0](https://github.com/FasterXML/jackson/blob/master/LICENSE)
