@@ -96,19 +96,25 @@ public class DrawMyPanel extends JPanel {
 
     public void openImageToJPanel() {
         try {
-            String fileName = JOptionPane.showInputDialog("Enter a file name:");
-            if (fileName == null || fileName.trim().isEmpty()) {
-                throw new Exception("Please enter a file name!");
-            }
-
-            BufferedImage image = ImageIO.read(new File("./" + fileName + ".png"));
-            String json = SteganographyUtil.decode(image);
-            if (json != null && !json.isEmpty()) {
-                myShapes = fromJson(json);
-                repaint();
-                JOptionPane.showMessageDialog(null, "The file was loaded successfully with shapes.");
+            JFileChooser fileChooser = new JFileChooser(new File("."));
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("PNG Images", "png"));
+            fileChooser.setDialogTitle("Select a file to open");
+    
+            int returnValue = fileChooser.showOpenDialog(null);
+    
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                BufferedImage image = ImageIO.read(selectedFile);
+                String json = SteganographyUtil.decode(image);
+                if (json != null && !json.isEmpty()) {
+                    myShapes = fromJson(json);
+                    repaint();
+                    JOptionPane.showMessageDialog(null, "The file was loaded successfully with shapes.");
+                } else {
+                    add(new JLabel(new ImageIcon(image)));
+                }
             } else {
-                add(new JLabel(new ImageIcon(image)));
+                JOptionPane.showMessageDialog(null, "No file selected!");
             }
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "The file was not found!");
@@ -118,7 +124,6 @@ public class DrawMyPanel extends JPanel {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-
     public void saveImageFromJPanel() {
         try {
             JFileChooser fileChooser = new JFileChooser(new File("."));
