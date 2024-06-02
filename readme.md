@@ -5,14 +5,14 @@ Making a Simple Drawing Application with Java for a Term Project
 <br/>
 
 
-## <img src="https://em-content.zobj.net/source/microsoft-teams/363/thinking-face_1f914.png" alt="프로젝트 소개" style="width:1em; height:1em"/> 프로젝트 소개
+## <img src="/assets/icons/thinking-face.png" alt="프로젝트 소개" style="width:1em; height:1em"/> 프로젝트 소개
 
 객체지향프로그래밍 강의 텀 프로젝트의 진행 과정과 변경사항을 기록하기 위해 만든 Git 레포지토리입니다. 이 프로젝트는 `java.awt`와 `javax.swing` 등의 라이브러리를 활용하여 기초적인 자바 스킬을 향상시키기 위해 진행합니다. 초기 커밋은 Hong Min 교수님께서 제공해 주셨으며, 미션 1~4까지의 과제가 포함되어 있습니다. 이 과제들은 초반에 해결되었고, 더 나은 그림판 애플리케이션으로 발전시켜보며 자바에 대해 더 깊이 이해하고자 합니다.
 
 <details>
-<summary><img src="https://em-content.zobj.net/source/microsoft-teams/363/check-mark_2714-fe0f.png" alt="해결한 미션" style="width:1em; height:1em;"/><b>&nbsp;해결한 미션 설명</b></summary>
+<summary><img src="/assets/icons/check-mark.png" alt="해결한 미션" style="width:1em; height:1em;"/><b>&nbsp;해결한 미션 설명</b></summary>
 
-## <img src="https://em-content.zobj.net/source/microsoft-teams/363/check-mark_2714-fe0f.png" alt="해결한 미션" style="width:1em; height:1em"/> 해결한 미션
+## <img src="/assets/icons/check-mark.png" alt="해결한 미션" style="width:1em; height:1em"/> 해결한 미션
 
 ### 미션1
 `[Mission1]`부분에 `ActionListener`를 넣어 코드가 정상적으로 작동하도록 하였습니다.
@@ -98,7 +98,7 @@ public void mouseDragged(MouseEvent event) {
 
 <br/>
 
-## <img src="https://em-content.zobj.net/source/microsoft-teams/363/shooting-star_1f320.png" alt="가산점 포인트" style="width:1em; height:1em"/> 가산점 포인트
+## <img src="/assets/icons/shooting-star.png" alt="가산점 포인트" style="width:1em; height:1em"/> 가산점 포인트
 
 
 그림을 저장한 후에 다시 그림판으로 불러왔을 때, `LinkedList`로 저장된 Shapes들을 그대로 다시 불러와서 `Undo`와 `Redo`가 작동하게 하면, 교수님께서 가산점을 주신다고 하셨습니다. 이때, `LinkedList`를 어떤 형식과 확장자로 저장하는지는 자율이라고 하셨습니다.
@@ -124,7 +124,7 @@ public void mouseDragged(MouseEvent event) {
 
 <br/>
 
-## <img src="https://em-content.zobj.net/source/microsoft-teams/363/hammer-and-wrench_1f6e0-fe0f.png" alt="추가된 기능 및 개선사항" style="width:1em; height:1em"/> 추가된 기능 및 개선사항
+## <img src="/assets/icons/hammer-and-wrench.png" alt="추가된 기능 및 개선사항" style="width:1em; height:1em"/> 추가된 기능 및 개선사항
 
 ### 완성본에서 마우스 좌표값 제거
 그림판에서 그림을 다 그리고 파일을 저장했을때, 좌측 하단에 표시되는 마우스 좌표값이 같이 저장되는 문제를 개선했습니다.
