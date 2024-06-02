@@ -144,3 +144,16 @@ public void mouseDragged(MouseEvent event) {
 
 ### 파일 열람 방식 수정
 파일명만 입력하면 루트 디렉토리에서 해당 파일이 열리던 형식에서,`JFileChooser`를 활용해 저장할 때 파일 위치를 선택하여 불러올 수 있도록 하였습니다.
+
+<br/>
+
+## 프로젝트에 포함된 오픈소스
+
+- Jackson JSON Processor: FasterXML. (n.d.). Retrieved from [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson)  
+  License: [Apache License 2.0](https://github.com/FasterXML/jackson/blob/master/LICENSE)
+
+- Microsoft 3D Animated Emoji. (n.d.). Retrieved from [https://github.com/microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji)  
+  License: [MIT License](https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE)
+
+- FontAwesome (Pro Plan). (n.d.). Retrieved from [https://fontawesome.com](https://fontawesome.com)  
+  License: [Font Awesome Pro License](https://fontawesome.com/license/pro
