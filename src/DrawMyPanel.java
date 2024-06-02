@@ -4,13 +4,17 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
@@ -281,29 +285,33 @@ public class DrawMyPanel extends JPanel {
 
     private LinkedList<GcuShape> fromJson(String json) {
         ObjectMapper mapper = createObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
             JsonNode jsonNode = mapper.readTree(json);
             ArrayList<GcuShape> shapeList = new ArrayList<>();
             for (JsonNode node : jsonNode) {
                 String type = node.get("type").asText();
-                ((ObjectNode) node).remove("type");
+                ObjectNode objectNode = (ObjectNode) node;
+                objectNode.remove("type");
+
                 GcuShape shape = null;
                 switch (type) {
                     case "line":
-                        shape = mapper.treeToValue(node, GcuLine.class);
+                        shape = mapper.treeToValue(objectNode, GcuLine.class);
                         break;
                     case "oval":
-                        shape = mapper.treeToValue(node, GcuOval.class);
+                        shape = mapper.treeToValue(objectNode, GcuOval.class);
                         break;
                     case "rectangle":
-                        shape = mapper.treeToValue(node, GcuRectangle.class);
+                        shape = mapper.treeToValue(objectNode, GcuRectangle.class);
                         break;
                 }
                 shapeList.add(shape);
             }
             LinkedList<GcuShape> shapes = new LinkedList<>();
-            for (GcuShape shape : shapeList) {
-                shapes.addFront(shape);
+            // 역순으로 추가하여 LinkedList에 저장
+            for (int i = shapeList.size() - 1; i >= 0; i--) {
+                shapes.addFront(shapeList.get(i));
             }
             return shapes;
         } catch (Exception e) {

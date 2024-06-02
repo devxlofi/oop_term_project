@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class LinkedList<T> implements Iterable<T> {
     private int numberOfNodes = 0;
     private ListNode<T> front = null;

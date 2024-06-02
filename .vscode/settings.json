@@ -18,7 +18,10 @@
     "java.jdt.ls.vmargs": "",
     "java.import.gradle.jvmArguments": "",
     "java.project.referencedLibraries": [
-      "lib/**/*.jar"
+      "lib/**/*.jar",
+      "lib/jackson-annotations-2.17.1.jar",
+      "lib/jackson-core-2.17.1.jar",
+      "lib/jackson-databind-2.17.1.jar",
     ]
 }
   
