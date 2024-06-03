@@ -110,6 +110,7 @@ public class DrawMyPanel extends JPanel {
                     myShapes = fromJson(json);
                     repaint();
                     JOptionPane.showMessageDialog(null, "The file was loaded successfully with shapes.");
+                    add(statusLabel, BorderLayout.SOUTH);
                 } else {
                     add(new JLabel(new ImageIcon(image)));
                 }
